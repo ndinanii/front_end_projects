@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Technical Documentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav id="navbar">
+        <header>Python Core Concepts</header>
+        <ul>
+            <li><a class="nav-link" href="#Introduction_to_Python">Introduction to Python</a></li>
+            <li><a class="nav-link" href="#Basic_Syntax">Basic Syntax</a></li>
+            <li><a class="nav-link" href="#Variables_and_Data_Types">Variables and Data Types</a></li>
+            <li><a class="nav-link" href="#Control_Flow">Control Flow</a></li>
+            <li><a class="nav-link" href="#Functions">Functions</a></li>
+            <li><a class="nav-link" href="#Error_Handling">Error Handling</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-doc">
+        <section class="main-section" id="Introduction_to_Python">
+            <header>Introduction to Python</header>
+            <article>
+                <p>Python is an interpreted, high-level, general-purpose programming language. Created by Guido van Rossum and first released in 1991, Python's design philosophy emphasizes code readability with its notable use of significant indentation.</p>
+                <p>It is dynamically typed and garbage-collected, supporting multiple programming paradigms, including structured (procedural), object-oriented, and functional programming. Python is widely used for web development, data science, artificial intelligence, and more.</p>
+                <code>print("Welcome to Python!")</code>
+            </article>
+        </section>
+
+        <section class="main-section" id="Basic_Syntax">
+            <header>Basic Syntax</header>
+            <article>
+                <p>Python's syntax is designed to be clear and concise. Key elements include:</p>
+                <ul>
+                    <li><strong>Indentation:</strong> Python uses indentation (typically four spaces) to define blocks of code, rather than curly braces.</li>
+                    <li><strong>Comments:</strong> Single-line comments start with a <code>#</code>. Multi-line strings (using triple quotes <code>'''</code> or <code>"""</code>) are often used for multi-line comments.</li>
+                    <li><strong>Case-Sensitivity:</strong> Python is case-sensitive, meaning <code>variable</code> and <code>Variable</code> are distinct.</li>
+                </ul>
+                <p>Variables are created when you assign a value to them, and you do not need to declare their type explicitly.</p>
+                <code>
+# This is a comment
+name = "Python" # A variable holding a string
+year = 1991     # A variable holding an integer
+if year > 1990:
+    print(f"{name} was released after 1990.")
+                </code>
+            </article>
+        </section>
+
+        <section class="main-section" id="Variables_and_Data_Types">
+            <header>Variables and Data Types</header>
+            <article>
+                <p>Variables are names that refer to values in memory. Python has several built-in data types:</p>
+                <ul>
+                    <li><strong>Numeric Types:</strong> <code>int</code> (integers), <code>float</code> (floating-point numbers), <code>complex</code> (complex numbers).</li>
+                    <li><strong>Text Type:</strong> <code>str</code> (strings).</li>
+                    <li><strong>Sequence Types:</strong> <code>list</code> (ordered, mutable), <code>tuple</code> (ordered, immutable), <code>range</code>.</li>
+                    <li><strong>Mapping Type:</strong> <code>dict</code> (unordered key-value pairs).</li>
+                    <li><strong>Set Types:</strong> <code>set</code> (unordered, unique items), <code>frozenset</code> (immutable set).</li>
+                    <li><strong>Boolean Type:</strong> <code>bool</code> (<code>True</code> or <code>False</code>).</li>
+                </ul>
+                <p>The type of a variable is determined at runtime (dynamic typing).</p>
+                <code>
+age = 30                     # int
+price = 19.99                # float
+name = "Alice"               # str
+colors = ["red", "green"]    # list
+person = {"name": "Bob", "age": 25} # dict
+is_valid = True              # bool
+                </code>
+            </article>
+        </section>
+
+        <section class="main-section" id="Control_Flow">
+            <header>Control Flow</header>
+            <article>
+                <p>Control flow statements manage the order in which the program's code executes.</p>
+                <p>Conditional statements like <code>if</code>, <code>elif</code> (else if), and <code>else</code> allow you to execute code blocks based on conditions. Loops like <code>for</code> (to iterate over sequences) and <code>while</code> (to repeat as long as a condition is true) are used for repetitive tasks.</p>
+                <code>
+x = 10
+if x > 5:
+    print("x is greater than 5")
+elif x == 5:
+    print("x is 5")
+else:
+    print("x is less than 5")
+
+# For loop
+for i in range(3): # Iterates 0, 1, 2
+    print(f"Loop iteration: {i}")
+
+# While loop
+count = 0
+while count < 2:
+    print(f"While count: {count}")
+    count += 1
+                </code>
+                <p>Loop control statements like <code>break</code> (exit loop) and <code>continue</code> (skip to next iteration) can modify loop behavior.</p>
+            </article>
+        </section>
+
+        <section class="main-section" id="Functions">
+            <header>Functions</header>
+            <article>
+                <p>Functions are reusable blocks of code that perform a specific task. They are defined using the <code>def</code> keyword.</p>
+                <p>Functions can take input parameters (arguments) and can return output values using the <code>return</code> statement. This helps in organizing code, making it modular and easier to maintain.</p>
+                <code>
+# Defining a function
+def greet(name):
+    return f"Hello, {name}!"
+
+# Calling the function
+message = greet("Developer")
+print(message) # Output: Hello, Developer!
+
+def add(a, b=1): # b has a default value
+    return a + b
+
+sum_result = add(5)
+print(sum_result) # Output: 6
+sum_result_two = add(5, 3)
+print(sum_result_two) # Output: 8
+                </code>
+                <p>Docstrings (documentation strings) are triple-quoted strings used as the first statement in a function to describe what it does.</p>
+            </article>
+        </section>
+
+        <section class="main-section" id="Error_Handling">
+            <header>Error Handling</header>
+            <article>
+                <p>Python uses exceptions to manage errors that occur during program execution. The <code>try...except</code> block is used to catch and handle these exceptions gracefully.</p>
+                <ul>
+                    <li>The <code>try</code> block contains code that might raise an exception.</li>
+                    <li>The <code>except</code> block catches specific exceptions and executes code to handle them.</li>
+                    <li>The <code>else</code> block (optional) executes if no exceptions occur in the <code>try</code> block.</li>
+                    <li>The <code>finally</code> block (optional) always executes, regardless of whether an exception occurred (useful for cleanup).</li>
+                </ul>
+                <p>This prevents the program from crashing and allows for more robust applications.</p>
+                <code>
+try:
+    numerator = 10
+    denominator = 0 # This will cause a ZeroDivisionError
+    # denominator = 2 # Try this for a successful division
+    result = numerator / denominator
+except ZeroDivisionError:
+    print("Error: Cannot divide by zero!")
+    result = None
+except TypeError:
+    print("Error: Invalid data type for operation.")
+    result = None
+else:
+    print("Division was successful.")
+finally:
+    print("Try-except block finished.")
+
+if result is not None:
+    print(f"Result: {result}")
+                </code>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

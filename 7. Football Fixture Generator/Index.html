@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soccer Fixtures Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Soccer Fixture Generator</h1>
+    </header>
+    <main>
+        <div class="controls-container">
+            <h2>Add Your Teams</h2>
+            <div class="team-input-area">
+                <input type="text" id="teamNameInput" placeholder="Enter team name">
+                <button id="addTeamBtn">Add Team</button>
+            </div>
+            <div id="messageArea" class="message-area"></div>
+            <h3>Teams Added:</h3>
+            <ul id="teamList" class="team-list">
+                </ul>
+            <div class="action-buttons">
+                <button id="generateFixturesBtn" disabled>Generate Fixtures</button>
+                <button id="resetAllBtn">Reset All</button>
+            </div>
+        </div>
+
+        <div id="fixturesContainer">
+            </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

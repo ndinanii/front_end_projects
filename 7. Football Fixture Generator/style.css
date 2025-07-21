@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+body {
+    background-color: #000000; /* Black */
+    color: #FFFFFF; /* White */
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+header h1 {
+    color: #FFFFFF;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.controls-container {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 15px rgba(255, 165, 0, 0.1);
+}
+
+.controls-container h2, .controls-container h3 {
+    color: #FFA500; /* Orange */
+    margin-top: 0;
+}
+
+.team-input-area {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+#teamNameInput {
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #333;
+    color: #FFF;
+    flex-grow: 1;
+    max-width: 300px;
+    font-size: 16px;
+}
+
+#teamNameInput::placeholder {
+    color: #aaa;
+}
+
+button {
+    background-color: #FFA500; /* Orange */
+    color: #FFFFFF; /* White */
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
+}
+
+button:hover:not(:disabled) {
+    background-color: #cc8400; /* Darker Orange for hover */
+    transform: translateY(-2px);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(0px);
+}
+
+button:disabled {
+    background-color: #555; /* Grey for disabled */
+    color: #999;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.message-area {
+    min-height: 24px; /* Reserve space for messages */
+    margin: 15px 0;
+    font-size: 0.9em;
+    color: #FFA500; /* Orange for messages */
+}
+
+.team-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+    max-height: 150px; /* Limit height and make scrollable if needed */
+    overflow-y: auto; /* Add scroll if list is long */
+}
+
+.team-list li {
+    background-color: #2c2c2c;
+    padding: 8px 12px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95em;
+}
+
+.team-list .remove-team-btn {
+    background-color: #e74c3c; /* Reddish for remove */
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.team-list .remove-team-btn:hover {
+    background-color: #c0392b; /* Darker red */
+    transform: none; /* Override general button hover lift */
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#fixturesContainer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+#fixturesContainer.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+table {
+    width: 90%;
+    max-width: 700px;
+    border-collapse: collapse;
+    margin: 0 auto;
+    box-shadow: 0 0 15px rgba(255, 165, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #444444;
+    padding: 10px 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #282828;
+    color: #FFA500;
+    font-weight: 700;
+}
+
+td {
+    color: #FFFFFF;
+}
+
+tbody tr:nth-child(even) td { /* Alternating row colors */
+    background-color: #0e0e0e; /* Slightly different dark for even rows */
+}
+
+tbody tr:hover td {
+    background-color: #1f1f1f; /* Lighter black on row hover */
+}
+/* --- Responsive Styles --- */
+/* For tablets and smaller desktops */
+@media (max-width: 768px) {
+    body {
+        padding: 15px; /* Reduce body padding */
+    }
+
+    .controls-container {
+        padding: 15px;
+        /* max-width will naturally be 100% of its parent due to margin auto,
+           but we ensure it doesn't exceed viewport width with some margin */
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    #teamNameInput {
+        font-size: 15px; /* Slightly smaller font in input */
+    }
+
+    button {
+        padding: 10px 15px; /* Adjust button padding */
+        font-size: 15px;
+    }
+
+    .team-list li {
+        font-size: 0.9em;
+    }
+
+    .team-list .remove-team-btn {
+        padding: 3px 6px;
+        font-size: 0.75em;
+    }
+
+    table {
+        width: 100%; /* Allow table to use full width available */
+        font-size: 0.9em; /* Reduce font size in table for smaller screens */
+    }
+
+    th, td {
+        padding: 8px 10px; /* Reduce cell padding */
+    }
+
+    header h1 {
+        font-size: 1.8em; /* Adjust main heading size */
+    }
+
+    .controls-container h2 {
+        font-size: 1.3em;
+    }
+     .controls-container h3 {
+        font-size: 1.1em;
+    }
+}
+
+/* For smaller mobile phones */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 1.5em; /* Further adjust main heading size */
+        margin-bottom: 20px;
+    }
+
+    .controls-container {
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+     .controls-container h2 {
+        font-size: 1.2em;
+    }
+     .controls-container h3 {
+        font-size: 1.0em;
+    }
+
+
+    .team-input-area {
+        flex-direction: column; /* Stack input and button vertically */
+        gap: 8px;
+    }
+
+    #teamNameInput {
+        width: calc(100% - 22px); /* Account for padding/border to fill width */
+        max-width: none; /* Remove max-width restraint */
+    }
+
+    #addTeamBtn {
+        width: 100%; /* Make add button full width */
+    }
+
+    .action-buttons {
+        flex-direction: column; /* Stack Generate and Reset buttons */
+        gap: 10px;
+    }
+
+    .action-buttons button {
+        width: 100%; /* Make action buttons full width */
+    }
+
+    table {
+        font-size: 0.8em; /* Further reduce font size in table */
+    }
+
+    th, td {
+        padding: 6px 8px; /* Further reduce cell padding */
+        /* For very narrow screens, you might need to handle text overflow.
+           Example: wrap text or use ellipsis.
+           white-space: normal; (default, but good to be aware of)
+        */
+    }
+
+    /* Make the table container horizontally scrollable if content is too wide */
+    #fixturesContainer {
+        width: 100%;
+        overflow-x: auto; /* This is key for tables on mobile */
+    }
+
+    #fixturesContainer table {
+        min-width: 400px; /* Or whatever minimum width your table content needs
+                             This encourages scrolling rather than squishing too much */
+    }
+
+
+    .team-list {
+        max-height: 120px; /* Slightly reduce max height for team list */
+    }
+}
+
+/* Accessibility: Ensure focus states are clear on mobile */
+button:focus, #teamNameInput:focus {
+    outline: 2px solid #FFA500; /* Or your preferred focus indicator */
+    outline-offset: 2px;
+}

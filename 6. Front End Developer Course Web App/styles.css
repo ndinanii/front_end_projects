@@ -1,0 +1,166 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif; 
+    background-color: #f4f4f9; 
+    color: #333;
+    line-height: 1.6;
+}
+
+main {
+    max-width: 900px; /* Prevents the content from being too wide */
+    margin: 20px auto; /* Centers the container on the page with space on top/bottom */
+    padding: 20px; /* Adds space inside the container */
+}
+
+.header {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 0 2rem;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 70px;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #555;
+    font-weight: 700;
+    transition: color 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active-link {
+    color: hsl(20, 100%, 50%); /* A nice blue for active/hover state */
+}
+
+/* --- Hamburger Menu --- */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #333;
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- Content & Sections --- */
+.content-category {
+    display: none; /* Hide categories by default */
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+.content-category.active-content {
+    display: block; /* Show only the active category */
+}
+
+/* Typography */
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #000;
+}
+
+section {
+    background-color: #ffffff;
+    margin-bottom: 30px;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+section h2 {
+    margin-bottom: 15px;
+}
+
+iframe {
+    border-radius: 8px;
+    border: none;
+    max-width: 100%;
+}
+
+/* --- Summary & Bullet Points --- */
+.summary {
+    max-width: 560px; /* Constrains width to match video */
+    margin: 20px auto 0; /* Center it below the video */
+    text-align: left; /* Align text to the left for readability */
+    color: #444;
+}
+
+.summary p {
+    margin-bottom: 10px;
+}
+
+.summary ul {
+    list-style-position: inside;
+    padding-left: 0;
+}
+
+/* --- Responsive Design --- */
+@media(max-width: 768px) {
+    .hamburger {
+        display: block; /* Show burger on mobile */
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%; /* Hide menu off-screen */
+        top: 70px;
+        flex-direction: column;
+        background-color: #fff;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu.active {
+        left: 0; /* Show menu when active */
+    }
+
+    .nav-item {
+        padding: 1.5rem 0;
+    }
+}
