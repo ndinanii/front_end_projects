@@ -30,8 +30,8 @@
         }
         
         h1 {
-            font-size: 2.8rem;
-            font-weight: 600;
+            font-size: 2.7rem;
+            font-weight: 500;
             margin-bottom: 10px;
             background: linear-gradient(90deg, #ff9a9e, #fad0c4);
             -webkit-background-clip: text;
@@ -155,3 +155,4 @@
                 padding: 16px;
             }
         }
+        
