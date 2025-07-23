@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RPG Creature Search</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex flex-col items-center p-4">
+  <h1 class="text-3xl font-bold mb-6 mt-4">RPG Creature Search</h1>
+
+  <div class="mb-6 w-full max-w-md flex gap-2">
+    <input type="text" id="search-input" placeholder="Enter creature name or ID" required class="flex-1 p-2 rounded border border-gray-700 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    <button id="search-button" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">Search</button>
+  </div>
+
+  <div id="creature-info" class="w-full max-w-md bg-gray-800 p-6 rounded-lg shadow-lg">
+    <h2 id="creature-name" class="text-2xl font-bold mb-2"></h2>
+    <p id="creature-id" class="mb-2"></p>
+    <p id="weight" class="mb-1"></p>
+    <p id="height" class="mb-4"></p>
+    <div id="types" class="flex gap-2 mb-4"></div>
+
+    <p class="font-semibold mb-2">Stats</p>
+    <p>HP: <span id="hp"></span></p>
+    <p>Attack: <span id="attack"></span></p>
+    <p>Defense: <span id="defense"></span></p>
+    <p>Special Attack: <span id="special-attack"></span></p>
+    <p>Special Defense: <span id="special-defense"></span></p>
+    <p>Speed: <span id="speed"></span></p>
+  </div>
+
+  <script>
+    const input = document.getElementById('search-input');
+    const button = document.getElementById('search-button');
+
+    const nameEl = document.getElementById('creature-name');
+    const idEl = document.getElementById('creature-id');
+    const weightEl = document.getElementById('weight');
+    const heightEl = document.getElementById('height');
+    const typesEl = document.getElementById('types');
+    const hpEl = document.getElementById('hp');
+    const attackEl = document.getElementById('attack');
+    const defenseEl = document.getElementById('defense');
+    const specialAttackEl = document.getElementById('special-attack');
+    const specialDefenseEl = document.getElementById('special-defense');
+    const speedEl = document.getElementById('speed');
+
+    button.addEventListener('click', () => {
+      const query = input.value.trim();
+      if (!query) return;
+
+      const url = `https://rpg-creature-api.freecodecamp.rocks/api/creature/${encodeURIComponent(query.toLowerCase())}`;
+
+      fetch(url)
+        .then(response => {
+          if (!response.ok) throw new Error('Creature not found');
+          return response.json();
+        })
+        .then(data => {
+          // clear previous
+          typesEl.innerHTML = '';
+
+          // basic fields
+          nameEl.textContent = data.name.toUpperCase();
+          idEl.textContent = `#${data.id}`;
+          weightEl.textContent = `Weight: ${data.weight}`;
+          heightEl.textContent = `Height: ${data.height}`;
+
+          // types
+          data.types.forEach(typeObj => {
+            const span = document.createElement('span');
+            // assuming flattened type object
+            const typeName = typeObj.name || (typeObj.type && typeObj.type.name);
+            span.textContent = typeName.toUpperCase();
+            span.className = 'bg-blue-500 text-white text-sm px-2 py-1 rounded';
+            typesEl.appendChild(span);
+          });
+
+          // stats array
+          data.stats.forEach(statObj => {
+            const { name, base_stat } = statObj;
+            switch (name) {
+              case 'hp': hpEl.textContent = base_stat; break;
+              case 'attack': attackEl.textContent = base_stat; break;
+              case 'defense': defenseEl.textContent = base_stat; break;
+              case 'special-attack': specialAttackEl.textContent = base_stat; break;
+              case 'special-defense': specialDefenseEl.textContent = base_stat; break;
+              case 'speed': speedEl.textContent = base_stat; break;
+            }
+          });
+        })
+        .catch(err => {
+          alert('Creature not found');
+          console.error(err);
+        });
+    });
+  </script>
+</body>
+</html>
