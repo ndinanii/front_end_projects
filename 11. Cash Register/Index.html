@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Register</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .price-display {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        #cash {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        #cash:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.3);
+            transform: translateY(-2px);
+        }
+
+        #purchase-btn {
+            background: linear-gradient(45deg, #FF6B6B, #ee5a52);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        #purchase-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        #purchase-btn:active {
+            transform: translateY(-1px);
+        }
+
+        #change-due {
+            background: rgba(0, 0, 0, 0.05);
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 60px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #333;
+            line-height: 1.5;
+            word-wrap: break-word;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        #change-due.success {
+            background: rgba(76, 175, 80, 0.1);
+            border-color: #4CAF50;
+            color: #2e7d32;
+        }
+
+        #change-due.error {
+            background: rgba(244, 67, 54, 0.1);
+            border-color: #f44336;
+            color: #c62828;
+        }
+
+        #change-due.warning {
+            background: rgba(255, 193, 7, 0.1);
+            border-color: #ffc107;
+            color: #f57c00;
+        }
+
+        .cash-drawer {
+            margin-top: 25px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .cash-drawer h3 {
+            color: #555;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .drawer-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        .drawer-item {
+            background: white;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #eee;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .drawer-items {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💰 Cash Register</h1>
+        
+        <div class="price-display">
+            Item Price: $<span id="price-display">19.5</span>
+        </div>
+
+        <div class="input-group">
+            <label for="cash">Cash from Customer:</label>
+            <input type="number" id="cash" step="0.01" placeholder="Enter amount">
+        </div>
+
+        <button id="purchase-btn">Purchase Item</button>
+
+        <div id="change-due">Enter cash amount and click purchase</div>
+
+        <div class="cash-drawer">
+            <h3>Cash in Drawer</h3>
+            <div class="drawer-items" id="drawer-display"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
