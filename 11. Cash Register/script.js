@@ -1,5 +1,5 @@
 // Initial values - using let so they can be reassigned for testing
-        let price = 19.5;
+        let price = 25.5;
         let cid = [
             ["PENNY", 1.01],
             ["NICKEL", 2.05],
